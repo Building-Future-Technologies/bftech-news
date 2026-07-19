@@ -1,6 +1,7 @@
 import { createClient } from "@supabase/supabase-js";
 import Link from "next/link";
 import Image from "next/image";
+import NewsletterSubscribe from "./components/NewsletterSubscribe";
 
 const supabase = createClient(
   process.env.SUPABASE_URL!,
@@ -47,6 +48,8 @@ export default async function Home() {
           solo lugar.
         </p>
       </div>
+      <NewsletterSubscribe />
+
       <div
         style={{
           display: "grid",
