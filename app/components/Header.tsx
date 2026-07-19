@@ -37,6 +37,7 @@ export default function Header() {
 
       <div className={`${styles.menuOverlay} ${open ? styles.open : ''}`}>
         <nav className={styles.menuOverlayNav}>
+          <a href="https://www.bftech.es" onClick={() => setOpen(false)}>Inicio</a>
           <a href="https://www.bftech.es/servicios.html" onClick={() => setOpen(false)}>Servicios</a>
           <a href="https://www.bftech.es/nosotros.html" onClick={() => setOpen(false)}>Sobre Nosotros</a>
           <a href="https://www.bftech.es/proyectos.html" onClick={() => setOpen(false)}>Proyectos</a>

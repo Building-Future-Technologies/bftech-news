@@ -30,9 +30,6 @@ export default async function Home() {
             lineHeight: 1.05,
             textTransform: "uppercase",
             textShadow: "0 0 20px rgba(245, 200, 0, 0.35)",
-            background: "linear-gradient(90deg, #F5C800 0%, #ffffff 35%, #F5C800 100%)",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
           }}
         >
           Tech News
@@ -46,7 +43,8 @@ export default async function Home() {
             lineHeight: 1.6,
           }}
         >
-          Últimas novedades, análisis y tendencias del mundo tecnológico en un solo lugar.
+          Últimas novedades, análisis y tendencias del mundo tecnológico en un
+          solo lugar.
         </p>
       </div>
       <div
@@ -60,7 +58,8 @@ export default async function Home() {
           <Link
             key={post.slug}
             href={`/post/${post.slug}`}
-            style={{ textDecoration: "none" }}
+            className="newsCard"
+            style={{ display: "block", textDecoration: "none" }}
           >
             <div
               style={{
@@ -79,7 +78,12 @@ export default async function Home() {
                 />
               </div>
               <div style={{ padding: 16 }}>
-                <h3 style={{ color: "#fff", margin: 0 }}>{post.title}</h3>
+                <h3
+                  className="newsTitle"
+                  style={{ color: "#F5C800", margin: 0 }}
+                >
+                  {post.title}
+                </h3>
                 <p style={{ color: "#aaa", fontSize: 14 }}>
                   {post.body.slice(0, 100)}...
                 </p>
