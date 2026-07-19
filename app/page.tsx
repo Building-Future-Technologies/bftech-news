@@ -77,16 +77,43 @@ export default async function Home() {
                   style={{ objectFit: "cover" }}
                 />
               </div>
-              <div style={{ padding: 16 }}>
-                <h3
-                  className="newsTitle"
-                  style={{ color: "#F5C800", margin: 0 }}
+              <div
+                style={{
+                  padding: 16,
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "space-between",
+                  minHeight: 170,
+                }}
+              >
+                <div>
+                  <h3
+                    className="newsTitle"
+                    style={{ color: "#F5C800", margin: 0 }}
+                  >
+                    {post.title}
+                  </h3>
+                  <p style={{ color: "#aaa", fontSize: 14, marginTop: 12 }}>
+                    {post.body.slice(0, 100)}...
+                  </p>
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "flex-end",
+                    marginTop: 16,
+                  }}
                 >
-                  {post.title}
-                </h3>
-                <p style={{ color: "#aaa", fontSize: 14 }}>
-                  {post.body.slice(0, 100)}...
-                </p>
+                  <span style={{ color: "#888", fontSize: 12 }}>
+                    {post.created_at
+                      ? new Date(post.created_at).toLocaleDateString("es-ES", {
+                          day: "numeric",
+                          month: "long",
+                          year: "numeric",
+                        })
+                      : "Fecha no disponible"}
+                  </span>
+                </div>
               </div>
             </div>
           </Link>
