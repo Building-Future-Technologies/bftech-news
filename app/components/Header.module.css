@@ -1,0 +1,103 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 2rem;
+  background: #0a0a0a;
+  position: relative;
+  z-index: 100;
+}
+
+.logo img {
+  display: block;
+}
+
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  width: 32px;
+  height: 24px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.hamburger span {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background: #F5C800;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.hamburger.open span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.open span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+.menuOverlay {
+  position: fixed;
+  inset: 0;
+  background: #0a0a0a;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-16px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  z-index: 90;
+}
+
+.menuOverlay.open {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.menuOverlayNav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.menuOverlayNav a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 28px;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.menuOverlayNav a:hover {
+  color: #F5C800;
+}
+
+.menuOverlayNavFooter {
+  display: flex;
+  gap: 24px;
+  margin-top: 20px;
+}
+
+.menuOverlayNavFooter a {
+  color: #888;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.menuOverlayNavFooter a:hover {
+  color: #F5C800;
+}
