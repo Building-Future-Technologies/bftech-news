@@ -18,6 +18,13 @@ function slugify(text: string) {
 }
 
 export async function POST(req: Request) {
+  // simple auth: check cookie editor_auth against server token
+  const cookieHeader = req.headers.get("cookie") || "";
+  const match = cookieHeader.match(/editor_auth=([^;]+)/);
+  const token = process.env.NEW_POST_TOKEN ?? "1";
+  if (!match || match[1] !== token) {
+    return NextResponse.json({ error: "No autorizado" }, { status: 401 });
+  }
   const formData = await req.formData();
   const title = formData.get("title") as string;
   const body = formData.get("body") as string;
