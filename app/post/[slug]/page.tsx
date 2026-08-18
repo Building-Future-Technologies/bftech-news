@@ -1,19 +1,81 @@
-import { createClient } from '@supabase/supabase-js';
-import Image from 'next/image';
-import Link from 'next/link';
-import { notFound } from 'next/navigation';
+import { createClient } from "@supabase/supabase-js";
+import type { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
+import { notFound } from "next/navigation";
 
-const supabase = createClient(process.env.SUPABASE_URL!, process.env.SUPABASE_ANON_KEY!);
+const supabase = createClient(
+  process.env.SUPABASE_URL!,
+  process.env.SUPABASE_ANON_KEY!,
+);
 
 export const revalidate = 300;
 
-export default async function PostPage({ params }: { params: Promise<{ slug: string }> }) {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
   const { slug } = await params;
 
   const { data: post } = await supabase
-    .from('posts')
-    .select('*')
-    .eq('slug', slug)
+    .from("posts")
+    .select("title, body, image_url, source_url")
+    .eq("slug", slug)
+    .single();
+
+  if (!post) {
+    return {};
+  }
+
+  const description = post.body
+    ? post.body.replace(/\s+/g, " ").trim().slice(0, 160)
+    : "Artículo de BFTech News";
+
+  const canonicalUrl = `${process.env.NEXT_PUBLIC_APP_URL ?? "https://www.bftech.news"}/post/${slug}`;
+
+  return {
+    title: post.title,
+    description,
+    alternates: {
+      canonical: canonicalUrl,
+    },
+    openGraph: {
+      title: post.title,
+      description,
+      url: canonicalUrl,
+      siteName: "BFTech News",
+      type: "article",
+      publishedTime: new Date().toISOString(),
+      images: [
+        {
+          url: post.image_url,
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description,
+      images: [post.image_url],
+    },
+  };
+}
+
+export default async function PostPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+
+  const { data: post } = await supabase
+    .from("posts")
+    .select("*")
+    .eq("slug", slug)
     .single();
 
   if (!post) notFound();

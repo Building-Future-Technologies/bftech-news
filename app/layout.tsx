@@ -15,11 +15,28 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "BFTech News",
+  metadataBase: process.env.NEXT_PUBLIC_APP_URL
+    ? new URL(process.env.NEXT_PUBLIC_APP_URL)
+    : new URL("https://www.bftech.news"),
+  title: {
+    default: "BFTech News",
+    template: "%s | BFTech News",
+  },
   description: "Latest technology news, analysis, and trends in one place.",
-  icons:{
+  icons: {
     icon: "/favicon.ico",
-  }
+  },
+  openGraph: {
+    title: "BFTech News",
+    description: "Latest technology news, analysis, and trends in one place.",
+    siteName: "BFTech News",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "BFTech News",
+    description: "Latest technology news, analysis, and trends in one place.",
+  },
 };
 
 export default function RootLayout({
