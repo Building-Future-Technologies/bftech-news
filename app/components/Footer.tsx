@@ -38,7 +38,7 @@ export default function Footer() {
         <div className={styles.footerLinks}>
           <a href="https://www.bftech.es/contacto.html"><p>Contacto</p></a>
           <a className={styles.linkDisplay} href="mailto:info@bftech.com">info@bftech.com</a>
-          <a className={styles.linkDisplay} href="tel:+34646476662">+34 646 476 662</a>
+          <a className={styles.linkDisplay} href="tel:+34614589765">+34 614 58 97 65</a>
           <a className={styles.linkDisplay}>Madrid, España</a>
         </div>
 
