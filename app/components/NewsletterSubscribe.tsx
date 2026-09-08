@@ -79,7 +79,7 @@ export default function NewsletterSubscribe() {
             }}
           >
             Recibe cada semana casos reales, herramientas y estrategias de IA y 
-            tecnología para ahorrar tiempo, mejorar tu negocio y detectar nuevas oportunidades. Gratis.
+            tecnología para ahorrar tiempo, mejorar tu negocio y detectar nuevas oportunidades. ¡GRATIS!
           </p>
         </div>
 
