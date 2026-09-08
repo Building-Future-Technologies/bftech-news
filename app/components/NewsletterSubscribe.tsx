@@ -78,8 +78,8 @@ export default function NewsletterSubscribe() {
               fontSize: "0.95rem",
             }}
           >
-            Recibe un resumen semanal de las noticias más importantes de
-            tecnología. ¡GRATIS!
+            Recibe cada semana casos reales, herramientas y estrategias de IA y 
+            tecnología para ahorrar tiempo, mejorar tu negocio y detectar nuevas oportunidades. Gratis.
           </p>
         </div>
 
