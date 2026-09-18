@@ -12,6 +12,11 @@ type Post = {
   created_at?: string;
 };
 
+function truncateText(text: string, maxCharacters: number) {
+  if (text.length <= maxCharacters) return text;
+  return `${text.slice(0, maxCharacters).trimEnd()}...`;
+}
+
 export default function PostsFeed() {
   const [weeksLoaded, setWeeksLoaded] = useState<number[]>([0, 1]);
   const [groups, setGroups] = useState<Record<number, Post[]>>({});
@@ -105,10 +110,13 @@ export default function PostsFeed() {
                         className="newsTitle"
                         style={{ color: "#F5C800", margin: 0 }}
                       >
-                        {post.title}
+                        {truncateText(post.title, 60)}
                       </h3>
-                      <p style={{ color: "#aaa", fontSize: 14, marginTop: 12 }}>
-                        {post.body.slice(0, 100)}...
+                      <p
+                        className="newsPreview"
+                        style={{ color: "#aaa", fontSize: 14, marginTop: 12 }}
+                      >
+                        {truncateText(post.body, 120)}
                       </p>
                     </div>
                     <div
